@@ -26,6 +26,7 @@
 		185413DF1EE7D84B00C3E866 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		185413E21EE7D84B00C3E866 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		185413E41EE7D84B00C3E866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		185414071EE7F8D300C3E866 /* MyLayoutParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLayoutParser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +87,7 @@
 				185414061EE7D97800C3E866 /* HTML */,
 				185414051EE7D97200C3E866 /* JSON */,
 				185414041EE7D96800C3E866 /* AndroidXML */,
+				185414071EE7F8D300C3E866 /* MyLayoutParser.h */,
 			);
 			path = MyLayoutParser;
 			sourceTree = "<group>";
@@ -343,6 +345,7 @@
 				185413E91EE7D84B00C3E866 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
