@@ -58,13 +58,13 @@
      *     如果不是 则表示刚刚处理完一个endElement事件，即这个元素不是父元素的第一个元素
      */
     
-    if(![parser checkJustProcessStartElement]){
+    if(![parser checkJustProcessStartElement]){//节点解析完毕
         parser.jsonString = [parser.jsonString stringByAppendingString:@","];
         [parser configJustProcessStartElement:YES];
     }
     parser.jsonString = [parser.jsonString stringByAppendingString:@"{"];
-    parser.jsonString = [parser.jsonString stringByAppendingString:@"\"elementName\":"];
-    parser.jsonString = [parser.jsonString stringByAppendingFormat:@"\"%@\",",elementName];
+    parser.jsonString = [parser.jsonString stringByAppendingFormat:@"\"elementName\":\"%@\"",elementName];
+    parser.jsonString = [parser.jsonString stringByAppendingString:@","];
     //将解析出来的元素属性添加到JSON字符串中
     
     parser.jsonString = [parser.jsonString stringByAppendingString:@"\"attrs\":{"];
@@ -78,7 +78,8 @@
         attribute = [attriMut componentsJoinedByString:@","];
         parser.jsonString = [parser.jsonString stringByAppendingString:attribute];
     }
-    parser.jsonString = [parser.jsonString stringByAppendingString:@"},"];
+    parser.jsonString = [parser.jsonString stringByAppendingString:@"}"];
+    parser.jsonString = [parser.jsonString stringByAppendingString:@","];
     //将解析出来的元素的子元素列表添加到JSON字符串中
     parser.jsonString = [parser.jsonString stringByAppendingString:@"\"childElements\":["];
 }
