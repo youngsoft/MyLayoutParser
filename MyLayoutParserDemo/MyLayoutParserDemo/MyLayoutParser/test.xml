@@ -1,0 +1,14 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dip"
+    android:layout_height="300dip"
+    android:background="#888888"
+    tools:context=".MainActivity" >
+    
+    <ImageView
+    android:layout_width="200dip"
+    android:layout_height="200dip"
+    android:background="#238712"
+    android:contentDescription="@null" />
+    
+</RelativeLayout>

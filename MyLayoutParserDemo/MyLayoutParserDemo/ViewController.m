@@ -7,23 +7,32 @@
 //
 
 #import "ViewController.h"
-
+#import "ParserManager.h"
 @interface ViewController ()
-
+@property (nonatomic, strong) ParserManager *parserManager;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    NSXMLParser * parser = [self.parserManager parserWithBlock:^(NSMutableDictionary *xmlDictionary, NSString *jsonString, NSError *error) {
+        if (error) {
+            NSLog(@"xml 解析错误：%@",error);
+            return;
+        }
+        NSLog(@"json:\n%@",jsonString);
+        NSLog(@"字典:\n%@",xmlDictionary);
+    }];
+    [parser parse];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (ParserManager *)parserManager
+{
+    if (!_parserManager) {
+        _parserManager = [[ParserManager alloc] init];
+    }
+    return _parserManager;
 }
-
 
 @end

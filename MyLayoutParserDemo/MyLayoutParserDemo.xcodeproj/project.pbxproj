@@ -13,6 +13,10 @@
 		185413DE1EE7D84B00C3E866 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185413DC1EE7D84B00C3E866 /* Main.storyboard */; };
 		185413E01EE7D84B00C3E866 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185413DF1EE7D84B00C3E866 /* Assets.xcassets */; };
 		185413E31EE7D84B00C3E866 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185413E11EE7D84B00C3E866 /* LaunchScreen.storyboard */; };
+		CA71BED91EF9059A00B14B72 /* test.xml in Resources */ = {isa = PBXBuildFile; fileRef = CA71BED81EF9059A00B14B72 /* test.xml */; };
+		CA71BEDD1EF90C5300B14B72 /* ParserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA71BEDC1EF90C5300B14B72 /* ParserManager.m */; };
+		CA71BEEE1EF925ED00B14B72 /* test2.xml in Resources */ = {isa = PBXBuildFile; fileRef = CA71BEED1EF925ED00B14B72 /* test2.xml */; };
+		CA71BF001EF931A200B14B72 /* NSXMLParser+MyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CA71BEFF1EF931A200B14B72 /* NSXMLParser+MyLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,12 @@
 		185413E21EE7D84B00C3E866 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		185413E41EE7D84B00C3E866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185414071EE7F8D300C3E866 /* MyLayoutParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLayoutParser.h; sourceTree = "<group>"; };
+		CA71BED81EF9059A00B14B72 /* test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test.xml; sourceTree = "<group>"; };
+		CA71BEDB1EF90C5300B14B72 /* ParserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParserManager.h; sourceTree = "<group>"; };
+		CA71BEDC1EF90C5300B14B72 /* ParserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParserManager.m; sourceTree = "<group>"; };
+		CA71BEED1EF925ED00B14B72 /* test2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test2.xml; sourceTree = "<group>"; };
+		CA71BEFE1EF931A200B14B72 /* NSXMLParser+MyLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLParser+MyLayout.h"; sourceTree = "<group>"; };
+		CA71BEFF1EF931A200B14B72 /* NSXMLParser+MyLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLParser+MyLayout.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +94,7 @@
 		185414021EE7D93400C3E866 /* MyLayoutParser */ = {
 			isa = PBXGroup;
 			children = (
+				CA71BEDA1EF90C2900B14B72 /* Parser */,
 				185414061EE7D97800C3E866 /* HTML */,
 				185414051EE7D97200C3E866 /* JSON */,
 				185414041EE7D96800C3E866 /* AndroidXML */,
@@ -109,8 +120,21 @@
 		185414061EE7D97800C3E866 /* HTML */ = {
 			isa = PBXGroup;
 			children = (
+				CA71BED81EF9059A00B14B72 /* test.xml */,
+				CA71BEED1EF925ED00B14B72 /* test2.xml */,
 			);
 			name = HTML;
+			sourceTree = "<group>";
+		};
+		CA71BEDA1EF90C2900B14B72 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				CA71BEDB1EF90C5300B14B72 /* ParserManager.h */,
+				CA71BEDC1EF90C5300B14B72 /* ParserManager.m */,
+				CA71BEFE1EF931A200B14B72 /* NSXMLParser+MyLayout.h */,
+				CA71BEFF1EF931A200B14B72 /* NSXMLParser+MyLayout.m */,
+			);
+			name = Parser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,8 +196,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				185413E31EE7D84B00C3E866 /* LaunchScreen.storyboard in Resources */,
+				CA71BEEE1EF925ED00B14B72 /* test2.xml in Resources */,
 				185413E01EE7D84B00C3E866 /* Assets.xcassets in Resources */,
 				185413DE1EE7D84B00C3E866 /* Main.storyboard in Resources */,
+				CA71BED91EF9059A00B14B72 /* test.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +212,8 @@
 			files = (
 				185413DB1EE7D84B00C3E866 /* ViewController.m in Sources */,
 				185413D81EE7D84B00C3E866 /* AppDelegate.m in Sources */,
+				CA71BF001EF931A200B14B72 /* NSXMLParser+MyLayout.m in Sources */,
+				CA71BEDD1EF90C5300B14B72 /* ParserManager.m in Sources */,
 				185413D51EE7D84B00C3E866 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
