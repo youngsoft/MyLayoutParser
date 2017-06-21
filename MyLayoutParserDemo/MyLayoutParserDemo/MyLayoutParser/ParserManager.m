@@ -14,9 +14,8 @@
 
 @end
 @implementation ParserManager
-- (NSXMLParser *)parserWithBlock:(XMLParserBlock)block{
+- (NSXMLParser *)parserFilePath:(NSString *)path withBlock:(XMLParserBlock)block{
     
-    NSString * path = [[NSBundle mainBundle] pathForResource:@"test2" ofType:@"xml"];
     NSURL * url = [NSURL fileURLWithPath:path];
     NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
     xmlParser.xmlUrl = url;

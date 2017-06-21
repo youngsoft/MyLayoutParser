@@ -16,7 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSXMLParser * parser = [self.parserManager parserWithBlock:^(NSMutableDictionary *xmlDictionary, NSString *jsonString, NSError *error) {
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"test2" ofType:@"xml"];
+    NSXMLParser * parser = [self.parserManager parserFilePath:path withBlock:^(NSMutableDictionary *xmlDictionary, NSString *jsonString, NSError *error) {
         if (error) {
             NSLog(@"xml 解析错误：%@",error);
             return;

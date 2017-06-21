@@ -19,5 +19,5 @@
 #endif
 
 @interface ParserManager : NSObject
-- (NSXMLParser *)parserWithBlock:(XMLParserBlock)block;
+- (NSXMLParser *)parserFilePath:(NSString *)path withBlock:(XMLParserBlock)block;
 @end
