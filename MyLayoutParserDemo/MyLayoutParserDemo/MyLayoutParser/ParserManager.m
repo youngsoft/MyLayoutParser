@@ -7,7 +7,7 @@
 //
 
 #import "ParserManager.h"
-
+#import "UIColor+ColorChange.h"
 
 
 @interface ParserManager()<NSXMLParserDelegate>
@@ -37,6 +37,7 @@
     [parser configJustProcessStartElement:YES];
     //清空字符
     parser.jsonString = @"";
+   
 }
 //step 5：解析结束
 - (void)parserDidEndDocument:(NSXMLParser *)parser
@@ -45,8 +46,8 @@
     //转化为字典
     NSError * error = nil;
     parser.xmlDictionary = [NSJSONSerialization JSONObjectWithData:[parser.jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&error];
-    if (parser.xmlParserBlock) {
-        parser.xmlParserBlock(parser.xmlDictionary, parser.jsonString, error);
+    if (!error) {
+        [self drawView:parser error:error];
     }
 }
 //step 2：准备解析节点
@@ -57,8 +58,8 @@
      *     如果是 则表示这个元素是父元素的第一个元素 。
      *     如果不是 则表示刚刚处理完一个endElement事件，即这个元素不是父元素的第一个元素
      */
-    
-    if(![parser checkJustProcessStartElement]){//节点解析完毕
+    BOOL justProcessStartElement = [parser checkJustProcessStartElement];
+    if(!justProcessStartElement){//节点解析完毕
         parser.jsonString = [parser.jsonString stringByAppendingString:@","];
         [parser configJustProcessStartElement:YES];
     }
@@ -88,20 +89,70 @@
 {
     [parser configJustProcessStartElement:NO];
     parser.jsonString = [parser.jsonString stringByAppendingString:@"]}"];
+    
 }
 //error
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError{
     if (parser.xmlParserBlock) {
-        parser.xmlParserBlock(parser.xmlDictionary, parser.jsonString, parseError);
+        parser.xmlParserBlock(parser.xmlDictionary, parser.jsonString,parser.xmlView ,parseError);
     }
 }
 - (void)parser:(NSXMLParser *)parser validationErrorOccurred:(NSError *)validationError{
     if (parser.xmlParserBlock) {
-        parser.xmlParserBlock(parser.xmlDictionary, parser.jsonString, validationError);
+        parser.xmlParserBlock(parser.xmlDictionary, parser.jsonString,parser.xmlView, validationError);
     }
 }
 //step 3:获取首尾节点间内容
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string{}
 //step 6：获取cdata块数据
 - (void)parser:(NSXMLParser *)parser foundCDATA:(NSData *)CDATABlock{}
+
+- (void)drawView:(NSXMLParser *)parser error:(NSError *)error{
+    parser.xmlView = [NSClassFromString(parser.xmlDictionary[@"elementName"]) new];
+    if (parser.xmlParserBlock) {
+        parser.xmlParserBlock(parser.xmlDictionary, parser.jsonString,parser.xmlView, error);
+    }
+    [self recurPrintPath:parser.xmlDictionary parent:parser.xmlView from:0];
+}
+
+- (void)recurPrintPath:(NSDictionary *)dict parent:(UIView *)parant from:(int)from{
+    for (NSString * key in dict.allKeys) {
+        if ([dict[key] isKindOfClass:[NSDictionary class]]) {//字典是面向属性的最后一关
+            if (from!=0) {
+                //这里面的都是子节点
+                UIView * view = [NSClassFromString(dict[@"elementName"]) new];
+                if (from==2) {
+                    [parant addSubview:view];
+                }
+                parant = view;
+            }
+           
+            [self recurPrintPath:dict[key] parent:parant from:1];
+            
+        }else if ([dict[key] isKindOfClass:[NSArray class]]){
+            for (NSDictionary * sub in dict[key]) {
+                [self recurPrintPath:sub parent:parant from:2];
+            }
+        }else{
+            if (![key isEqualToString:@"elementName"]) {
+                [self configProperty:key value:dict[key] view:parant];
+            }
+        }
+    }
+}
+#pragma mark - 属性映射表，这里乱写，要重新找一个方案
+- (void)configProperty:(NSString *)property value:(NSString *)value view:(UIView *)view{
+    CGRect frame = view.frame;
+    if ([property isEqualToString:@"layout_width"]) {
+        frame.size.width = [value floatValue];
+        view.frame = frame;
+    }
+    if ([property isEqualToString:@"layout_height"]) {
+        frame.size.height = [value floatValue];
+        view.frame = frame;
+    }
+    if ([property isEqualToString:@"background"]) {
+        view.backgroundColor = [UIColor colorWithHexString:value];
+    }
+}
 @end

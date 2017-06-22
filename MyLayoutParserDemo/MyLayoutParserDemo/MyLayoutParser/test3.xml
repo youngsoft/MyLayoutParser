@@ -1,0 +1,64 @@
+<MyLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="400"
+    android:layout_height="500"
+    android:background="#555555"
+    tools:context=".MainActivity"
+    android:id="@+id/view1"
+    >
+    <UIImageView
+        android:layout_width="300"
+        android:layout_height="300"
+        android:background="#122712"
+        android:contentDescription="@null"
+        android:id="@+id/iv1"
+        >
+        <UIView
+            android:layout_width="100"
+            android:layout_height="100"
+            android:background="#333888"
+            android:id="@+id/view2"
+            >
+        </UIView>
+    </UIImageView>
+    
+    <UIImageView
+        android:layout_width="120"
+        android:layout_height="120"
+        android:background="#238712"
+        android:contentDescription="@null"
+        android:id="@+id/iv2"
+        >
+        <UIView
+            android:layout_width="50"
+            android:layout_height="50"
+            android:background="#888787"
+            android:id="@+id/view3"
+            >
+        </UIView>
+        
+        <UIView
+            android:layout_width="50"
+            android:layout_height="50"
+            android:background="#888787"
+            android:id="@+id/view3"
+            >
+        </UIView>
+        
+        <UIView
+            android:layout_width="50"
+            android:layout_height="50"
+            android:background="#888787"
+            android:id="@+id/view3"
+            >
+            <UIView
+                android:layout_width="50"
+                android:layout_height="50"
+                android:background="#888787"
+                android:id="@+id/view3"
+                >
+            </UIView>
+        </UIView>
+    </UIImageView>
+</MyLinearLayout>

@@ -16,14 +16,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString * path = [[NSBundle mainBundle] pathForResource:@"test2" ofType:@"xml"];
-    NSXMLParser * parser = [self.parserManager parserFilePath:path withBlock:^(NSMutableDictionary *xmlDictionary, NSString *jsonString, NSError *error) {
+    __weak typeof(self) wSelf = self;
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"test3" ofType:@"xml"];
+    NSXMLParser * parser = [self.parserManager parserFilePath:path withBlock:^(NSMutableDictionary *xmlDictionary, NSString *jsonString,UIView * view, NSError *error) {
         if (error) {
             NSLog(@"xml 解析错误：%@",error);
             return;
         }
-        NSLog(@"json:\n%@",jsonString);
-        NSLog(@"字典:\n%@",xmlDictionary);
+       
+        [wSelf.view addSubview:view];
     }];
     [parser parse];
 }
