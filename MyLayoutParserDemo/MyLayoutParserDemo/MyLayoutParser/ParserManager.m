@@ -8,7 +8,7 @@
 
 #import "ParserManager.h"
 #import "UIColor+ColorChange.h"
-
+#import "MyLayout.h"
 
 @interface ParserManager()<NSXMLParserDelegate>
 
@@ -142,14 +142,28 @@
 }
 #pragma mark - 属性映射表，这里乱写，要重新找一个方案
 - (void)configProperty:(NSString *)property value:(NSString *)value view:(UIView *)view{
-    CGRect frame = view.frame;
+    
     if ([property isEqualToString:@"layout_width"]) {
-        frame.size.width = [value floatValue];
-        view.frame = frame;
+        if ([value isEqualToString:@"match_parent"]) {
+            view.myLeftMargin = view.myRightMargin = 0;
+        }
+        else if ([value isEqualToString:@"wrap_content"]){
+            view.wrapContentWidth = YES;
+        }
+        else{
+            view.myWidth = [value integerValue];
+        }
     }
     if ([property isEqualToString:@"layout_height"]) {
-        frame.size.height = [value floatValue];
-        view.frame = frame;
+        if ([value isEqualToString:@"match_parent"]) {
+            view.myTopMargin = view.myBottomMargin = 0;
+        }
+        else if ([value isEqualToString:@"wrap_content"]){
+             view.wrapContentHeight = YES;
+        }
+        else{
+            view.myHeight = [value integerValue];
+        }
     }
     if ([property isEqualToString:@"background"]) {
         view.backgroundColor = [UIColor colorWithHexString:value];
