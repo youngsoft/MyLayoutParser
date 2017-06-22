@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1840A8581EFB742D0080EBE1 /* YSColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840A8471EFB742D0080EBE1 /* YSColorManager.m */; };
+		1840A8591EFB742D0080EBE1 /* YSDimeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840A8491EFB742D0080EBE1 /* YSDimeManager.m */; };
+		1840A85A1EFB742D0080EBE1 /* YSBFontManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840A84B1EFB742D0080EBE1 /* YSBFontManager.m */; };
+		1840A85B1EFB742D0080EBE1 /* YSImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840A84D1EFB742D0080EBE1 /* YSImageManager.m */; };
+		1840A85C1EFB742D0080EBE1 /* YSRawManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840A84F1EFB742D0080EBE1 /* YSRawManager.m */; };
+		1840A85D1EFB742D0080EBE1 /* YSResourceBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840A8511EFB742D0080EBE1 /* YSResourceBase.m */; };
+		1840A85E1EFB742D0080EBE1 /* YSResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840A8531EFB742D0080EBE1 /* YSResourceManager.m */; };
+		1840A85F1EFB742D0080EBE1 /* YSStringManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840A8551EFB742D0080EBE1 /* YSStringManager.m */; };
+		1840A8601EFB742D0080EBE1 /* YSStyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840A8571EFB742D0080EBE1 /* YSStyleManager.m */; };
+		1840A8681EFB781B0080EBE1 /* color.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1840A8621EFB781B0080EBE1 /* color.plist */; };
+		1840A8691EFB781B0080EBE1 /* dime.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1840A8631EFB781B0080EBE1 /* dime.plist */; };
+		1840A86A1EFB781B0080EBE1 /* font.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1840A8641EFB781B0080EBE1 /* font.plist */; };
+		1840A86C1EFB781B0080EBE1 /* string.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1840A8661EFB781B0080EBE1 /* string.plist */; };
+		1840A86D1EFB781B0080EBE1 /* style.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1840A8671EFB781B0080EBE1 /* style.plist */; };
 		185413D51EE7D84B00C3E866 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 185413D41EE7D84B00C3E866 /* main.m */; };
 		185413D81EE7D84B00C3E866 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 185413D71EE7D84B00C3E866 /* AppDelegate.m */; };
 		185413DB1EE7D84B00C3E866 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185413DA1EE7D84B00C3E866 /* ViewController.m */; };
@@ -23,6 +37,29 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1840A8461EFB742D0080EBE1 /* YSColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = YSColorManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1840A8471EFB742D0080EBE1 /* YSColorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSColorManager.m; sourceTree = "<group>"; };
+		1840A8481EFB742D0080EBE1 /* YSDimeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = YSDimeManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1840A8491EFB742D0080EBE1 /* YSDimeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSDimeManager.m; sourceTree = "<group>"; };
+		1840A84A1EFB742D0080EBE1 /* YSFontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = YSFontManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1840A84B1EFB742D0080EBE1 /* YSBFontManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSBFontManager.m; sourceTree = "<group>"; };
+		1840A84C1EFB742D0080EBE1 /* YSImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = YSImageManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1840A84D1EFB742D0080EBE1 /* YSImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSImageManager.m; sourceTree = "<group>"; };
+		1840A84E1EFB742D0080EBE1 /* YSRawManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = YSRawManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1840A84F1EFB742D0080EBE1 /* YSRawManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSRawManager.m; sourceTree = "<group>"; };
+		1840A8501EFB742D0080EBE1 /* YSResourceBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = YSResourceBase.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1840A8511EFB742D0080EBE1 /* YSResourceBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = YSResourceBase.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1840A8521EFB742D0080EBE1 /* YSResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = YSResourceManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1840A8531EFB742D0080EBE1 /* YSResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = YSResourceManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1840A8541EFB742D0080EBE1 /* YSStringManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = YSStringManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1840A8551EFB742D0080EBE1 /* YSStringManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSStringManager.m; sourceTree = "<group>"; };
+		1840A8561EFB742D0080EBE1 /* YSStyleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = YSStyleManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1840A8571EFB742D0080EBE1 /* YSStyleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = YSStyleManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1840A8621EFB781B0080EBE1 /* color.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = color.plist; sourceTree = "<group>"; };
+		1840A8631EFB781B0080EBE1 /* dime.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dime.plist; sourceTree = "<group>"; };
+		1840A8641EFB781B0080EBE1 /* font.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = font.plist; sourceTree = "<group>"; };
+		1840A8661EFB781B0080EBE1 /* string.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = string.plist; sourceTree = "<group>"; };
+		1840A8671EFB781B0080EBE1 /* style.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = style.plist; sourceTree = "<group>"; };
 		185413D01EE7D84B00C3E866 /* MyLayoutParserDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLayoutParserDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		185413D41EE7D84B00C3E866 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		185413D61EE7D84B00C3E866 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -60,6 +97,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1840A8451EFB73F30080EBE1 /* ResourceManager */ = {
+			isa = PBXGroup;
+			children = (
+				1840A8461EFB742D0080EBE1 /* YSColorManager.h */,
+				1840A8471EFB742D0080EBE1 /* YSColorManager.m */,
+				1840A8481EFB742D0080EBE1 /* YSDimeManager.h */,
+				1840A8491EFB742D0080EBE1 /* YSDimeManager.m */,
+				1840A84A1EFB742D0080EBE1 /* YSFontManager.h */,
+				1840A84B1EFB742D0080EBE1 /* YSBFontManager.m */,
+				1840A84C1EFB742D0080EBE1 /* YSImageManager.h */,
+				1840A84D1EFB742D0080EBE1 /* YSImageManager.m */,
+				1840A84E1EFB742D0080EBE1 /* YSRawManager.h */,
+				1840A84F1EFB742D0080EBE1 /* YSRawManager.m */,
+				1840A8501EFB742D0080EBE1 /* YSResourceBase.h */,
+				1840A8511EFB742D0080EBE1 /* YSResourceBase.m */,
+				1840A8521EFB742D0080EBE1 /* YSResourceManager.h */,
+				1840A8531EFB742D0080EBE1 /* YSResourceManager.m */,
+				1840A8541EFB742D0080EBE1 /* YSStringManager.h */,
+				1840A8551EFB742D0080EBE1 /* YSStringManager.m */,
+				1840A8561EFB742D0080EBE1 /* YSStyleManager.h */,
+				1840A8571EFB742D0080EBE1 /* YSStyleManager.m */,
+			);
+			path = ResourceManager;
+			sourceTree = "<group>";
+		};
+		1840A8611EFB779C0080EBE1 /* Res */ = {
+			isa = PBXGroup;
+			children = (
+				1840A8621EFB781B0080EBE1 /* color.plist */,
+				1840A8631EFB781B0080EBE1 /* dime.plist */,
+				1840A8641EFB781B0080EBE1 /* font.plist */,
+				1840A8661EFB781B0080EBE1 /* string.plist */,
+				1840A8671EFB781B0080EBE1 /* style.plist */,
+			);
+			path = Res;
+			sourceTree = "<group>";
+		};
 		185413C71EE7D84B00C3E866 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +155,7 @@
 		185413D21EE7D84B00C3E866 /* MyLayoutParserDemo */ = {
 			isa = PBXGroup;
 			children = (
+				1840A8451EFB73F30080EBE1 /* ResourceManager */,
 				185414021EE7D93400C3E866 /* MyLayoutParser */,
 				185413D61EE7D84B00C3E866 /* AppDelegate.h */,
 				185413D71EE7D84B00C3E866 /* AppDelegate.m */,
@@ -98,6 +173,7 @@
 		185413D31EE7D84B00C3E866 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1840A8611EFB779C0080EBE1 /* Res */,
 				185413D41EE7D84B00C3E866 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -230,11 +306,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1840A86C1EFB781B0080EBE1 /* string.plist in Resources */,
+				1840A8681EFB781B0080EBE1 /* color.plist in Resources */,
 				185413E31EE7D84B00C3E866 /* LaunchScreen.storyboard in Resources */,
 				CA71BEEE1EF925ED00B14B72 /* test2.xml in Resources */,
+				1840A8691EFB781B0080EBE1 /* dime.plist in Resources */,
+				1840A86A1EFB781B0080EBE1 /* font.plist in Resources */,
 				185413E01EE7D84B00C3E866 /* Assets.xcassets in Resources */,
 				185413DE1EE7D84B00C3E866 /* Main.storyboard in Resources */,
 				CA71BED91EF9059A00B14B72 /* test.xml in Resources */,
+				1840A86D1EFB781B0080EBE1 /* style.plist in Resources */,
 				CA9CBC4E1EFA765E008483F7 /* test3.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,9 +378,18 @@
 				185413DB1EE7D84B00C3E866 /* ViewController.m in Sources */,
 				185413D81EE7D84B00C3E866 /* AppDelegate.m in Sources */,
 				CA71BF001EF931A200B14B72 /* NSXMLParser+MyLayout.m in Sources */,
+				1840A85B1EFB742D0080EBE1 /* YSImageManager.m in Sources */,
+				1840A85D1EFB742D0080EBE1 /* YSResourceBase.m in Sources */,
+				1840A85E1EFB742D0080EBE1 /* YSResourceManager.m in Sources */,
+				1840A8601EFB742D0080EBE1 /* YSStyleManager.m in Sources */,
 				CA71BEDD1EF90C5300B14B72 /* ParserManager.m in Sources */,
+				1840A8581EFB742D0080EBE1 /* YSColorManager.m in Sources */,
 				CAA1E7E11EFB577C00B1CA30 /* UIColor+ColorChange.m in Sources */,
+				1840A85C1EFB742D0080EBE1 /* YSRawManager.m in Sources */,
+				1840A85F1EFB742D0080EBE1 /* YSStringManager.m in Sources */,
+				1840A8591EFB742D0080EBE1 /* YSDimeManager.m in Sources */,
 				185413D51EE7D84B00C3E866 /* main.m in Sources */,
+				1840A85A1EFB742D0080EBE1 /* YSBFontManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,7 +512,9 @@
 			baseConfigurationReference = 3D4840214EA2EF2AD740B446 /* Pods-MyLayoutParserDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MyLayoutParserDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.youngsoft.MyLayoutParserDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -434,7 +526,9 @@
 			baseConfigurationReference = EFC97ECE57934000335DFB88 /* Pods-MyLayoutParserDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MyLayoutParserDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.youngsoft.MyLayoutParserDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
