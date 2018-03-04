@@ -48,6 +48,20 @@
 
 +(UIColor*)colorWithHex:(NSString*)hex
 {
+    hex = [[hex stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
+    
+    // String should be 6 or 8 characters
+    if ([hex length] < 6) {
+        return [UIColor clearColor];
+    }
+    // 判断前缀
+    if ([hex hasPrefix:@"0X"])
+        hex = [hex substringFromIndex:2];
+    if ([hex hasPrefix:@"#"])
+        hex = [hex substringFromIndex:1];
+    if ([hex length] != 6)
+        return [UIColor clearColor];
+    
     NSScanner *scanner = [NSScanner scannerWithString:hex];
     unsigned int val = 0;
     [scanner scanHexInt:&val];

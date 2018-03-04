@@ -7,7 +7,7 @@
 //
 
 #import "ParserManager.h"
-#import "UIColor+ColorChange.h"
+#import "YSResourceManager.h"
 #import "MyLayout.h"
 
 @interface ParserManager()<NSXMLParserDelegate>
@@ -166,7 +166,7 @@
         }
     }
     if ([property isEqualToString:@"background"]) {
-        view.backgroundColor = [UIColor colorWithHexString:value];
+        view.backgroundColor = [YSColorManager colorWithHex:value];
     }
 }
 @end

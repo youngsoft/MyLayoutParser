@@ -23,7 +23,6 @@
             NSLog(@"xml 解析错误：%@",error);
             return;
         }
-       
         [wSelf.view addSubview:view];
     }];
     [parser parse];
