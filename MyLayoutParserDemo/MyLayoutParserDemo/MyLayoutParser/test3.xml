@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DC143C"
+    android:backgroundColor="#DC143C"
     tools:context=".MainActivity"
     android:id="@+id/view1"
     >
     <UIImageView
         android:layout_width="match_parent"
         android:layout_height="100"
-        android:background="#0000FF"
+        android:backgroundColor="#0000FF"
         android:contentDescription="@null"
         android:id="@+id/iv1"
         >
@@ -19,14 +19,14 @@
     <UIView
         android:layout_width="match_parent"
         android:layout_height="100"
-        android:background="#00FFFF"
+        android:backgroundColor="#00FFFF"
         android:id="@+id/view4"
         >
     </UIView>
     <UIImageView
         android:layout_width="100"
         android:layout_height="200"
-        android:background="#238712"
+        android:backgroundColor="#238712"
         android:contentDescription="@null"
         android:id="@+id/iv2"
         >
@@ -34,14 +34,15 @@
     <MyLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFF00"
+        android:backgroundColor="#FFFF00"
         >
         <UIImageView
             android:layout_width="200"
             android:layout_height="200"
-            android:background="#00FF00"
+            android:backgroundColor="#00FF00"
             android:contentDescription="@null"
             android:id="@+id/iv2"
+            android:image="@drawable/img2"
             >
         </UIImageView>
     </MyLinearLayout>

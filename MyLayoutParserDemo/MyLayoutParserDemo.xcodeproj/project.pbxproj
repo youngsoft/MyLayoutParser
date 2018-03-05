@@ -34,6 +34,7 @@
 		CA71BF001EF931A200B14B72 /* NSXMLParser+MyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CA71BEFF1EF931A200B14B72 /* NSXMLParser+MyLayout.m */; };
 		CA9CBC4E1EFA765E008483F7 /* test3.xml in Resources */ = {isa = PBXBuildFile; fileRef = CA9CBC4D1EFA765E008483F7 /* test3.xml */; };
 		CAA1E7E11EFB577C00B1CA30 /* UIColor+ColorChange.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA1E7E01EFB577C00B1CA30 /* UIColor+ColorChange.m */; };
+		CAD7ADBB1F94E13800880952 /* NSString+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD7ADBA1F94E13800880952 /* NSString+Property.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,8 @@
 		CA9CBC4D1EFA765E008483F7 /* test3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test3.xml; sourceTree = "<group>"; };
 		CAA1E7DF1EFB577B00B1CA30 /* UIColor+ColorChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorChange.h"; sourceTree = "<group>"; };
 		CAA1E7E01EFB577C00B1CA30 /* UIColor+ColorChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorChange.m"; sourceTree = "<group>"; };
+		CAD7ADB91F94E13800880952 /* NSString+Property.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Property.h"; sourceTree = "<group>"; };
+		CAD7ADBA1F94E13800880952 /* NSString+Property.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Property.m"; sourceTree = "<group>"; };
 		EFC97ECE57934000335DFB88 /* Pods-MyLayoutParserDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLayoutParserDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyLayoutParserDemo/Pods-MyLayoutParserDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -241,6 +244,8 @@
 				CA71BEFF1EF931A200B14B72 /* NSXMLParser+MyLayout.m */,
 				CAA1E7DF1EFB577B00B1CA30 /* UIColor+ColorChange.h */,
 				CAA1E7E01EFB577C00B1CA30 /* UIColor+ColorChange.m */,
+				CAD7ADB91F94E13800880952 /* NSString+Property.h */,
+				CAD7ADBA1F94E13800880952 /* NSString+Property.m */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 				1840A85B1EFB742D0080EBE1 /* YSImageManager.m in Sources */,
 				1840A85D1EFB742D0080EBE1 /* YSResourceBase.m in Sources */,
 				1840A85E1EFB742D0080EBE1 /* YSResourceManager.m in Sources */,
+				CAD7ADBB1F94E13800880952 /* NSString+Property.m in Sources */,
 				1840A8601EFB742D0080EBE1 /* YSStyleManager.m in Sources */,
 				CA71BEDD1EF90C5300B14B72 /* ParserManager.m in Sources */,
 				1840A8581EFB742D0080EBE1 /* YSColorManager.m in Sources */,

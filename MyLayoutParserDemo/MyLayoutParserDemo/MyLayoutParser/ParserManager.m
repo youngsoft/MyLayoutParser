@@ -7,9 +7,10 @@
 //
 
 #import "ParserManager.h"
-#import "UIColor+ColorChange.h"
+#import "YSResourceManager.h"
 #import "MyLayout.h"
-
+#import "NSString+Property.h"
+#import <objc/runtime.h>
 @interface ParserManager()<NSXMLParserDelegate>
 
 @end
@@ -142,6 +143,8 @@
 }
 #pragma mark - 属性映射表，这里乱写，要重新找一个方案
 - (void)configProperty:(NSString *)property value:(NSString *)value view:(UIView *)view{
+    //YSResourceManager
+    YSResourceManager *mgr = [YSResourceManager loadFromMainBundle];
     
     if ([property isEqualToString:@"layout_width"]) {
         if ([value isEqualToString:@"match_parent"]) {
@@ -154,7 +157,7 @@
             view.myWidth = [value integerValue];
         }
     }
-    if ([property isEqualToString:@"layout_height"]) {
+    else if ([property isEqualToString:@"layout_height"]) {
         if ([value isEqualToString:@"match_parent"]) {
             view.myTopMargin = view.myBottomMargin = 0;
         }
@@ -165,8 +168,63 @@
             view.myHeight = [value integerValue];
         }
     }
-    if ([property isEqualToString:@"background"]) {
-        view.backgroundColor = [UIColor colorWithHexString:value];
+    else if ([property isEqualToString:@"background"]) {
+        view.backgroundColor = [mgr.colorManager colorWith:value];
     }
+    else {
+        NSString * first = [[property substringToIndex:1] uppercaseString];
+        NSString * rest = [property substringFromIndex:1];
+        NSString * setMethod = [NSString stringWithFormat:@"set%@%@:", first,rest];
+        
+        
+        //backgroundColor\textColor
+        if ([view respondsToSelector:NSSelectorFromString(setMethod)]) {
+            id propertyObj = [view valueForKey:property];
+            if (propertyObj) {
+                if ([propertyObj isKindOfClass:[UIColor class]]) {//如果是颜色
+                    [view setValue:[mgr.colorManager colorWith:value] forKey:property];
+                }
+                //字体大小
+                else if ([propertyObj isKindOfClass:[UIFont class]]){
+                    if([value isKindOfClass:[NSNumber class]]){
+                        const char * pObjCType = [((NSNumber*)value) objCType];
+                        if (strcmp(pObjCType, @encode(int))  == 0) {//int
+                            [view setValue:[UIFont systemFontOfSize:[value intValue]] forKey:property];
+                        }
+                        if (strcmp(pObjCType, @encode(float)) == 0) {//float
+                            [view setValue:[UIFont systemFontOfSize:[value floatValue]] forKey:property];
+                        }
+                        if (strcmp(pObjCType, @encode(double))  == 0) {//double
+                            [view setValue:[UIFont systemFontOfSize:[value doubleValue]] forKey:property];
+                        }
+                        if (strcmp(pObjCType, @encode(BOOL)) == 0) {//bool
+                            [view setValue:[UIFont systemFontOfSize:[value boolValue]] forKey:property];
+                        }
+                        
+                    }
+                }
+                NSArray * temp = [property componentsSeparatedByString:@"/"];
+                NSString * first = [temp firstObject];
+                NSString * last = [temp firstObject];
+                if (last) {
+                    if ([last isEqualToString:@"@drawable"]) {
+                        
+                    }
+                }else{
+                    //颜色
+                    
+                    //大小
+                    
+                    //图片名字
+                }
+            }
+            
+        }else{
+//            NSLog(@"%@,没有此属性:%@---%@",NSStringFromCGRect(view.frame),setMethod,value);
+        }
+        
+    }
+    
 }
+
 @end
