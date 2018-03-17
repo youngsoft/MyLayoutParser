@@ -61,6 +61,13 @@
     objc_setAssociatedObject(self, @selector(xmlView), xmlView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+-(UIView *)superView{
+    return objc_getAssociatedObject(self, _cmd);
+}
+-(void)setSuperView:(UIView *)superView{
+    objc_setAssociatedObject(self, @selector(superView), superView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 - (BOOL)checkIsProcessing{
     return [self.isProcessing boolValue];
 }

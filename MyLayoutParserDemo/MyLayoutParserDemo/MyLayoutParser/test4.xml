@@ -1,0 +1,25 @@
+<UIView
+    id="view"
+    
+    layout_constraintWidth_ToWidthOf="parent,@mul/0.5"
+    layout_constraintHeight_ToHeightOf="parent,@mul/0.5"
+    backgroundColor="#238712">
+
+    <UIView
+        id="view1"
+        layout_constraintWidth_ToWidthOf="100"
+        layout_constraintHeight_ToHeightOf="parent"
+        backgroundColor="#0301a1">
+        
+    </UIView>
+
+    <UIView
+        layout_marginLeft="50"
+        layout_marginTop="400"
+        layout_width="view"
+        layout_height="view"
+        backgroundColor="#1b61a1">
+        
+    </UIView>
+
+</UIView>

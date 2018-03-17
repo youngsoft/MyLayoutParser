@@ -10,21 +10,25 @@
 #import "YSResourceManager.h"
 #import "MyLayout.h"
 #import "NSString+Property.h"
+#import "UIView+FALayout.h"
 #import <objc/runtime.h>
 @interface ParserManager()<NSXMLParserDelegate>
-
+@property (nonatomic, strong) NSMutableArray * formats;
+@property (nonatomic, strong) NSMutableDictionary * views;
 @end
 @implementation ParserManager
 - (NSXMLParser *)parserFilePath:(NSString *)path withBlock:(XMLParserBlock)block{
-    
+    return [self parserFilePath:path withBlock:block superView:nil];
+}
+- (NSXMLParser *)parserFilePath:(NSString *)path withBlock:(XMLParserBlock)block superView:(UIView *)superView{
     NSURL * url = [NSURL fileURLWithPath:path];
     NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    xmlParser.superView = superView;
     xmlParser.xmlUrl = url;
     xmlParser.delegate = self;
     xmlParser.xmlParserBlock = block;
     return xmlParser;
 }
-
 #pragma mark xmlparser
 //step 1 :准备解析
 - (void)parserDidStartDocument:(NSXMLParser *)parser
@@ -38,7 +42,7 @@
     [parser configJustProcessStartElement:YES];
     //清空字符
     parser.jsonString = @"";
-   
+    
 }
 //step 5：解析结束
 - (void)parserDidEndDocument:(NSXMLParser *)parser
@@ -110,29 +114,52 @@
 
 - (void)drawView:(NSXMLParser *)parser error:(NSError *)error{
     parser.xmlView = [NSClassFromString(parser.xmlDictionary[@"elementName"]) new];
+    [self configId:parser.xmlView dict:parser.xmlDictionary[@"attrs"]];
+    
+    [self recurPrintPath:parser.xmlDictionary parent:parser.xmlView from:0 superView:parser.superView];
+    
+    [FALiveLeftDrawerView formats:self.formats views:self.views];
+    
+    [self.formats removeAllObjects];
+    [self.views removeAllObjects];
+    
     if (parser.xmlParserBlock) {
         parser.xmlParserBlock(parser.xmlDictionary, parser.jsonString,parser.xmlView, error);
     }
-    [self recurPrintPath:parser.xmlDictionary parent:parser.xmlView from:0];
+}
+- (void)configId:(UIView *)view dict:(NSDictionary *)dict{
+    NSString * layout_id = [NSString stringWithFormat:@"view_%ld_%ld", (long)[[NSDate date] timeIntervalSince1970]*1000,self.views.count];
+    if (dict && dict[@"id"]) {
+        layout_id = dict[@"id"];
+    }
+    view.layout_id = layout_id;
+    [self.views setObject:view forKey:view.layout_id];
 }
 
-- (void)recurPrintPath:(NSDictionary *)dict parent:(UIView *)parant from:(int)from{
+- (void)recurPrintPath:(NSDictionary *)dict parent:(UIView *)parant from:(int)from superView:(UIView *)superView{
     for (NSString * key in dict.allKeys) {
         if ([dict[key] isKindOfClass:[NSDictionary class]]) {//字典是面向属性的最后一关
             if (from!=0) {
                 //这里面的都是子节点
                 UIView * view = [NSClassFromString(dict[@"elementName"]) new];
+                [self configId:view dict:dict[@"attrs"]];
                 if (from==2) {
                     [parant addSubview:view];
                 }
                 parant = view;
             }
-           
-            [self recurPrintPath:dict[key] parent:parant from:1];
+            
+            if(!parant.superview && superView){
+                superView.layout_id = @"parent";
+                [self.views setObject:superView forKey:superView.layout_id];
+                [superView addSubview:parant];
+            }
+            
+            [self recurPrintPath:dict[key] parent:parant from:1 superView:superView];
             
         }else if ([dict[key] isKindOfClass:[NSArray class]]){
             for (NSDictionary * sub in dict[key]) {
-                [self recurPrintPath:sub parent:parant from:2];
+                [self recurPrintPath:sub parent:parant from:2 superView:superView];
             }
         }else{
             if (![key isEqualToString:@"elementName"]) {
@@ -141,90 +168,245 @@
         }
     }
 }
+- (BOOL)isPureInt:(NSString*)string{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    int val;
+    return[scan scanInt:&val] && [scan isAtEnd];
+}
 #pragma mark - 属性映射表，这里乱写，要重新找一个方案
+
 - (void)configProperty:(NSString *)property value:(NSString *)value view:(UIView *)view{
-    //YSResourceManager
     YSResourceManager *mgr = [YSResourceManager loadFromMainBundle];
-    
-    if ([property isEqualToString:@"layout_width"]) {
-        if ([value isEqualToString:@"match_parent"]) {
-            view.myLeftMargin = view.myRightMargin = 0;
+    value = [value stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if ([property hasPrefix:@"layout_"]) {
+        NSString * format = @"";
+        NSString * attri = @"";
+        NSString * attri2 = @"";
+        NSString * item2 = @"";
+        NSString * mul = @"1.0";
+        NSString * c = @"0.0";
+        NSString * relation = [value rangeOfString:@"="].location==NSNotFound?@"":@"=";
+        NSLayoutRelation rel = NSLayoutRelationEqual;
+        NSArray * propertys = @[];
+        BOOL isMargin = NO;
+        if ([property hasPrefix:@"layout_constraint"]) {
+            NSString *string = property;
+            NSRange startRange = [string rangeOfString:@"layout_constraint"];
+            NSRange endRange = [string rangeOfString:@"Of"];
+            NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
+            NSString *result = [string substringWithRange:range];
+            propertys = [result componentsSeparatedByString:@"_To"];
+        }else{
+            propertys = [property componentsSeparatedByString:@"_"];
+            NSString * last = [[[[propertys lastObject] substringToIndex:1] uppercaseString] stringByAppendingString:[[propertys lastObject] substringFromIndex:1]];
+            if ([last hasPrefix:@"Margin"]) {
+                isMargin = YES;
+                NSLayoutAttribute attribute2 = [FALiveLeftDrawerView layoutAttributeEnum:last];
+                propertys = @[[FALiveLeftDrawerView layoutAttributeIndex:attribute2-12],last];
+            }else{
+                propertys = @[last,@""];
+            }
         }
-        else if ([value isEqualToString:@"wrap_content"]){
-            view.wrapContentWidth = YES;
+        attri = ([FALiveLeftDrawerView layoutAttributeEnum:[propertys firstObject]] != NSNotFound)?[propertys firstObject]:@"";
+        if (propertys.count==2) {
+            attri2 = ([FALiveLeftDrawerView layoutAttributeEnum:[propertys lastObject]] != NSNotFound)?[propertys lastObject]:@"";
+        }else{
+            attri2=@"";
         }
-        else{
-            view.myWidth = [value integerValue];
+        BOOL isPure = [self isPureInt:value];
+        if(isPure){
+            if (isMargin) {
+                item2 = view.superview.layout_id;
+            }else{
+                item2 = @"";
+            }
+            mul = @"1.0";
+            c = value;
+            relation = @"=";
+        }else{
+            NSArray * values = [value componentsSeparatedByString:@","];
+            for (NSString * v in values) {
+                if ([v hasPrefix:@"@off/"]) {
+                    c = [v substringFromIndex:@"@off/".length];
+                }else if ([v hasPrefix:@"@mul/"]){
+                    mul = [v substringFromIndex:@"@mul/".length];
+                }else{
+                    if ([v hasPrefix:@">"]) {
+                        relation = [@">" stringByAppendingString:relation];
+                        rel = NSLayoutRelationGreaterThanOrEqual;
+                    }else if ([v hasPrefix:@"<"]){
+                        relation = [@"<" stringByAppendingString:relation];
+                        rel = NSLayoutRelationLessThanOrEqual;
+                    }
+                    if ([relation isEqualToString:@""]) {
+                        item2 = v;
+                        relation = @"=";
+                    }else{
+                        item2 = [v substringFromIndex:relation.length];
+                    }
+                }
+            }
+            if ([attri2 isEqualToString:@""]) {
+                attri2 = attri;
+            }
         }
+        
+        
+        if ([item2 isEqualToString:@""] && [attri2 isEqualToString:@""]) {
+            format = [NSString stringWithFormat:@"%@.%@%@%@",view.layout_id,[[[attri substringToIndex:1] lowercaseString] stringByAppendingString:[attri substringFromIndex:1]],relation,c];
+        }else{
+            format = [NSString stringWithFormat:@"%@.%@%@%@.%@*%@+%@",view.layout_id,[[[attri substringToIndex:1] lowercaseString] stringByAppendingString:[attri substringFromIndex:1]],relation,item2,[[[attri2 substringToIndex:1] lowercaseString] stringByAppendingString:[attri2 substringFromIndex:1]],mul,c];
+        }
+        NSLog(@"%@",format);
+        [self.formats addObject:format];
+        //        [FALiveLeftDrawerView constraintItem:view attr1:[FALiveLeftDrawerView layoutAttributeEnum:attri] rel:rel item2:superView attr2:[FALiveLeftDrawerView layoutAttributeEnum:attri2] mul:[mul doubleValue] constant:[c doubleValue]];
     }
-    else if ([property isEqualToString:@"layout_height"]) {
-        if ([value isEqualToString:@"match_parent"]) {
-            view.myTopMargin = view.myBottomMargin = 0;
-        }
-        else if ([value isEqualToString:@"wrap_content"]){
-             view.wrapContentHeight = YES;
-        }
-        else{
-            view.myHeight = [value integerValue];
-        }
-    }
-    else if ([property isEqualToString:@"background"]) {
-        view.backgroundColor = [mgr.colorManager colorWith:value];
-    }
-    else {
+    else{
         NSString * first = [[property substringToIndex:1] uppercaseString];
         NSString * rest = [property substringFromIndex:1];
         NSString * setMethod = [NSString stringWithFormat:@"set%@%@:", first,rest];
-        
-        
         //backgroundColor\textColor
         if ([view respondsToSelector:NSSelectorFromString(setMethod)]) {
-            id propertyObj = [view valueForKey:property];
-            if (propertyObj) {
-                if ([propertyObj isKindOfClass:[UIColor class]]) {//如果是颜色
-                    [view setValue:[mgr.colorManager colorWith:value] forKey:property];
+            if(value){
+                //颜色
+                if ([property hasSuffix:@"Color"]) {
+                    UIColor * color = [mgr.colorManager colorWith:value];
+                    //边框大小颜色
+                    if ([property isEqualToString:@"borderColor"]){
+                        view.layer.borderColor = color.CGColor;
+                    }else{
+                        [view setValue:color forKey:property];
+                    }
                 }
                 //字体大小
-                else if ([propertyObj isKindOfClass:[UIFont class]]){
-                    if([value isKindOfClass:[NSNumber class]]){
-                        const char * pObjCType = [((NSNumber*)value) objCType];
-                        if (strcmp(pObjCType, @encode(int))  == 0) {//int
-                            [view setValue:[UIFont systemFontOfSize:[value intValue]] forKey:property];
+                else if([self isPureInt:value]){
+                    const char * pObjCType = [((NSNumber*)value) objCType];
+                    id val = value;
+                    if ([property isEqualToString:@"font"] ||
+                        [property isEqualToString:@"borderWidth"]){
+                        if ([property isEqualToString:@"font"]) {
+                            if (strcmp(pObjCType, @encode(int))  == 0) {//int
+                                val = [UIFont systemFontOfSize:[value intValue]];
+                            }
+                            if (strcmp(pObjCType, @encode(float)) == 0) {//float
+                                val = [UIFont systemFontOfSize:[value floatValue]];
+                            }
+                            if (strcmp(pObjCType, @encode(double))  == 0) {//double
+                                val = [UIFont systemFontOfSize:[value doubleValue]];
+                            }
+                            if (strcmp(pObjCType, @encode(BOOL)) == 0) {//bool
+                                val = [UIFont systemFontOfSize:[value boolValue]];
+                            }
                         }
-                        if (strcmp(pObjCType, @encode(float)) == 0) {//float
-                            [view setValue:[UIFont systemFontOfSize:[value floatValue]] forKey:property];
+                        else if ([property isEqualToString:@"borderWidth"]){
+                            
                         }
-                        if (strcmp(pObjCType, @encode(double))  == 0) {//double
-                            [view setValue:[UIFont systemFontOfSize:[value doubleValue]] forKey:property];
-                        }
-                        if (strcmp(pObjCType, @encode(BOOL)) == 0) {//bool
-                            [view setValue:[UIFont systemFontOfSize:[value boolValue]] forKey:property];
-                        }
-                        
-                    }
-                }
-                NSArray * temp = [property componentsSeparatedByString:@"/"];
-                NSString * first = [temp firstObject];
-                NSString * last = [temp firstObject];
-                if (last) {
-                    if ([last isEqualToString:@"@drawable"]) {
-                        
+                        [view setValue:val forKey:property];
+                    }else {
+                        [view setValue:value forKey:property];
                     }
                 }else{
-                    //颜色
                     
-                    //大小
-                    
-                    //图片名字
                 }
             }
-            
-        }else{
-//            NSLog(@"%@,没有此属性:%@---%@",NSStringFromCGRect(view.frame),setMethod,value);
         }
-        
     }
-    
 }
 
+//- (void)configProperty:(NSString *)property value:(NSString *)value view:(UIView *)view{
+//    //YSResourceManager
+//    YSResourceManager *mgr = [YSResourceManager loadFromMainBundle];
+//
+//    if ([property isEqualToString:@"layout_width"]) {
+//        if ([value isEqualToString:@"match_parent"]) {
+//            view.myLeftMargin = view.myRightMargin = 0;
+//        }
+//        else if ([value isEqualToString:@"wrap_content"]){
+//            view.wrapContentWidth = YES;
+//        }
+//        else{
+//            view.myWidth = [value integerValue];
+//        }
+//    }
+//    else if ([property isEqualToString:@"layout_height"]) {
+//        if ([value isEqualToString:@"match_parent"]) {
+//            view.myTopMargin = view.myBottomMargin = 0;
+//        }
+//        else if ([value isEqualToString:@"wrap_content"]){
+//            view.wrapContentHeight = YES;
+//        }
+//        else{
+//            view.myHeight = [value integerValue];
+//        }
+//    }
+//    else if ([property isEqualToString:@"background"]) {
+//        view.backgroundColor = [mgr.colorManager colorWith:value];
+//    }
+//    else {
+//        NSString * first = [[property substringToIndex:1] uppercaseString];
+//        NSString * rest = [property substringFromIndex:1];
+//        NSString * setMethod = [NSString stringWithFormat:@"set%@%@:", first,rest];
+//
+//
+//        //backgroundColor\textColor
+//        if ([view respondsToSelector:NSSelectorFromString(setMethod)]) {
+//            id propertyObj = [view valueForKey:property];
+//            if (propertyObj) {
+//                if ([propertyObj isKindOfClass:[UIColor class]]) {//如果是颜色
+//                    [view setValue:[mgr.colorManager colorWith:value] forKey:property];
+//                }
+//                //字体大小
+//                else if ([propertyObj isKindOfClass:[UIFont class]]){
+//                    if([value isKindOfClass:[NSNumber class]]){
+//                        const char * pObjCType = [((NSNumber*)value) objCType];
+//                        if (strcmp(pObjCType, @encode(int))  == 0) {//int
+//                            [view setValue:[UIFont systemFontOfSize:[value intValue]] forKey:property];
+//                        }
+//                        if (strcmp(pObjCType, @encode(float)) == 0) {//float
+//                            [view setValue:[UIFont systemFontOfSize:[value floatValue]] forKey:property];
+//                        }
+//                        if (strcmp(pObjCType, @encode(double))  == 0) {//double
+//                            [view setValue:[UIFont systemFontOfSize:[value doubleValue]] forKey:property];
+//                        }
+//                        if (strcmp(pObjCType, @encode(BOOL)) == 0) {//bool
+//                            [view setValue:[UIFont systemFontOfSize:[value boolValue]] forKey:property];
+//                        }
+//
+//                    }
+//                }
+//                NSArray * temp = [property componentsSeparatedByString:@"/"];
+//                NSString * first = [temp firstObject];
+//                NSString * last = [temp firstObject];
+//                if (last) {
+//                    if ([last isEqualToString:@"@drawable"]) {
+//
+//                    }
+//                }else{
+//                    //颜色
+//
+//                    //大小
+//
+//                    //图片名字
+//                }
+//            }
+//            
+//        }else{
+//            //            NSLog(@"%@,没有此属性:%@---%@",NSStringFromCGRect(view.frame),setMethod,value);
+//        }
+//
+//    }
+//
+//}
+- (NSMutableArray *)formats{
+    if (!_formats) {
+        _formats = [NSMutableArray array];
+    }
+    return _formats;
+}
+- (NSMutableDictionary *)views{
+    if (!_views) {
+        _views = [NSMutableDictionary dictionary];
+    }
+    return _views;
+}
 @end

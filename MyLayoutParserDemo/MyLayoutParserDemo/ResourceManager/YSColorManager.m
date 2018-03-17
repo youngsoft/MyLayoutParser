@@ -25,12 +25,17 @@
     
     NSString *strVal = [self findResDescById:colorId];
     
-    if (strVal == nil)
-        NSAssert(0, @"Invalid color value:%@",colorId);
+    if (strVal == nil){
+//        NSAssert(0, @"Invalid color value:%@",colorId);
+        strVal = colorId;
+    }
     
-    if ([strVal hasPrefix:@"@"])
+    if ([strVal hasPrefix:@"@"] || [strVal hasPrefix:@"#"])
     {
         color = [self colorWith:[strVal substringFromIndex:1]];
+    }
+    else if ([strVal hasPrefix:@"0x"]){
+        color = [self colorWith:[strVal substringFromIndex:2]];
     }
     else
     {

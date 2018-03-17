@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NSXMLParser+MyLayout.h"
+#import "FALiveLeftDrawerView.h"
 /*
  XCode LLVM XXX - Preprocessing中Debug会添加 DEBUG=1 标志
  */
@@ -18,5 +19,5 @@
 #endif
 
 @interface ParserManager : NSObject
-- (NSXMLParser *)parserFilePath:(NSString *)path withBlock:(XMLParserBlock)block;
+- (NSXMLParser *)parserFilePath:(NSString *)path withBlock:(XMLParserBlock)block superView:(UIView *)superView;
 @end

@@ -16,6 +16,7 @@ typedef void(^XMLParserBlock)(NSMutableDictionary * xmlDictionary, NSString * js
 @property (nonatomic, copy) XMLParserBlock xmlParserBlock;
 
 @property (nonatomic, strong) UIView *xmlView;
+@property (nonatomic, weak) UIView *superView;
 
 - (BOOL)checkIsProcessing;
 - (void)configProcess:(BOOL)yesOrNo;
