@@ -28,15 +28,16 @@
 		185413E01EE7D84B00C3E866 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 185413DF1EE7D84B00C3E866 /* Assets.xcassets */; };
 		185413E31EE7D84B00C3E866 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185413E11EE7D84B00C3E866 /* LaunchScreen.storyboard */; };
 		47F84BE988917CA092EA4450 /* libPods-MyLayoutParserDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E6D83A3BF44F94B246609D /* libPods-MyLayoutParserDemo.a */; };
-		CA2CF40F205D0BCA005F9606 /* FALiveLeftDrawerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2CF40E205D0BCA005F9606 /* FALiveLeftDrawerView.m */; };
 		CA2CF411205D0BED005F9606 /* test4.xml in Resources */ = {isa = PBXBuildFile; fileRef = CA2CF410205D0BED005F9606 /* test4.xml */; };
 		CA2CF422205D3143005F9606 /* UIView+FALayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2CF421205D3143005F9606 /* UIView+FALayout.m */; };
 		CA71BED91EF9059A00B14B72 /* test.xml in Resources */ = {isa = PBXBuildFile; fileRef = CA71BED81EF9059A00B14B72 /* test.xml */; };
 		CA71BEDD1EF90C5300B14B72 /* ParserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA71BEDC1EF90C5300B14B72 /* ParserManager.m */; };
 		CA71BEEE1EF925ED00B14B72 /* test2.xml in Resources */ = {isa = PBXBuildFile; fileRef = CA71BEED1EF925ED00B14B72 /* test2.xml */; };
 		CA71BF001EF931A200B14B72 /* NSXMLParser+MyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CA71BEFF1EF931A200B14B72 /* NSXMLParser+MyLayout.m */; };
+		CA72D90B205F53F1005751CC /* test5.xml in Resources */ = {isa = PBXBuildFile; fileRef = CA72D90A205F53F1005751CC /* test5.xml */; };
 		CA9CBC4E1EFA765E008483F7 /* test3.xml in Resources */ = {isa = PBXBuildFile; fileRef = CA9CBC4D1EFA765E008483F7 /* test3.xml */; };
 		CAA1E7E11EFB577C00B1CA30 /* UIColor+ColorChange.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA1E7E01EFB577C00B1CA30 /* UIColor+ColorChange.m */; };
+		CAC269CB205F671200F5690B /* FormulaStringCalcUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC269CA205F671200F5690B /* FormulaStringCalcUtility.m */; };
 		CAD7ADBB1F94E13800880952 /* NSString+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD7ADBA1F94E13800880952 /* NSString+Property.m */; };
 /* End PBXBuildFile section */
 
@@ -77,8 +78,6 @@
 		185414071EE7F8D300C3E866 /* MyLayoutParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLayoutParser.h; sourceTree = "<group>"; };
 		3D4840214EA2EF2AD740B446 /* Pods-MyLayoutParserDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLayoutParserDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyLayoutParserDemo/Pods-MyLayoutParserDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		99E6D83A3BF44F94B246609D /* libPods-MyLayoutParserDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyLayoutParserDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA2CF40D205D0BC9005F9606 /* FALiveLeftDrawerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FALiveLeftDrawerView.h; sourceTree = "<group>"; };
-		CA2CF40E205D0BCA005F9606 /* FALiveLeftDrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FALiveLeftDrawerView.m; sourceTree = "<group>"; };
 		CA2CF410205D0BED005F9606 /* test4.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = test4.xml; sourceTree = "<group>"; };
 		CA2CF420205D3143005F9606 /* UIView+FALayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+FALayout.h"; sourceTree = "<group>"; };
 		CA2CF421205D3143005F9606 /* UIView+FALayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+FALayout.m"; sourceTree = "<group>"; };
@@ -88,9 +87,12 @@
 		CA71BEED1EF925ED00B14B72 /* test2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test2.xml; sourceTree = "<group>"; };
 		CA71BEFE1EF931A200B14B72 /* NSXMLParser+MyLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLParser+MyLayout.h"; sourceTree = "<group>"; };
 		CA71BEFF1EF931A200B14B72 /* NSXMLParser+MyLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLParser+MyLayout.m"; sourceTree = "<group>"; };
+		CA72D90A205F53F1005751CC /* test5.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = test5.xml; sourceTree = "<group>"; };
 		CA9CBC4D1EFA765E008483F7 /* test3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test3.xml; sourceTree = "<group>"; };
 		CAA1E7DF1EFB577B00B1CA30 /* UIColor+ColorChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorChange.h"; sourceTree = "<group>"; };
 		CAA1E7E01EFB577C00B1CA30 /* UIColor+ColorChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorChange.m"; sourceTree = "<group>"; };
+		CAC269C9205F671200F5690B /* FormulaStringCalcUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormulaStringCalcUtility.h; sourceTree = "<group>"; };
+		CAC269CA205F671200F5690B /* FormulaStringCalcUtility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FormulaStringCalcUtility.m; sourceTree = "<group>"; };
 		CAD7ADB91F94E13800880952 /* NSString+Property.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Property.h"; sourceTree = "<group>"; };
 		CAD7ADBA1F94E13800880952 /* NSString+Property.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Property.m"; sourceTree = "<group>"; };
 		EFC97ECE57934000335DFB88 /* Pods-MyLayoutParserDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLayoutParserDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyLayoutParserDemo/Pods-MyLayoutParserDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				CA71BEED1EF925ED00B14B72 /* test2.xml */,
 				CA9CBC4D1EFA765E008483F7 /* test3.xml */,
 				CA2CF410205D0BED005F9606 /* test4.xml */,
+				CA72D90A205F53F1005751CC /* test5.xml */,
 			);
 			name = HTML;
 			sourceTree = "<group>";
@@ -255,10 +258,10 @@
 				CAA1E7E01EFB577C00B1CA30 /* UIColor+ColorChange.m */,
 				CAD7ADB91F94E13800880952 /* NSString+Property.h */,
 				CAD7ADBA1F94E13800880952 /* NSString+Property.m */,
-				CA2CF40D205D0BC9005F9606 /* FALiveLeftDrawerView.h */,
-				CA2CF40E205D0BCA005F9606 /* FALiveLeftDrawerView.m */,
 				CA2CF420205D3143005F9606 /* UIView+FALayout.h */,
 				CA2CF421205D3143005F9606 /* UIView+FALayout.m */,
+				CAC269C9205F671200F5690B /* FormulaStringCalcUtility.h */,
+				CAC269CA205F671200F5690B /* FormulaStringCalcUtility.m */,
 			);
 			name = Parser;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				CA71BED91EF9059A00B14B72 /* test.xml in Resources */,
 				1840A86D1EFB781B0080EBE1 /* style.plist in Resources */,
 				CA9CBC4E1EFA765E008483F7 /* test3.xml in Resources */,
+				CA72D90B205F53F1005751CC /* test5.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,11 +409,11 @@
 				1840A8601EFB742D0080EBE1 /* YSStyleManager.m in Sources */,
 				CA71BEDD1EF90C5300B14B72 /* ParserManager.m in Sources */,
 				1840A8581EFB742D0080EBE1 /* YSColorManager.m in Sources */,
+				CAC269CB205F671200F5690B /* FormulaStringCalcUtility.m in Sources */,
 				CAA1E7E11EFB577C00B1CA30 /* UIColor+ColorChange.m in Sources */,
 				1840A85C1EFB742D0080EBE1 /* YSRawManager.m in Sources */,
 				1840A85F1EFB742D0080EBE1 /* YSStringManager.m in Sources */,
 				1840A8591EFB742D0080EBE1 /* YSDimeManager.m in Sources */,
-				CA2CF40F205D0BCA005F9606 /* FALiveLeftDrawerView.m in Sources */,
 				185413D51EE7D84B00C3E866 /* main.m in Sources */,
 				1840A85A1EFB742D0080EBE1 /* YSBFontManager.m in Sources */,
 			);

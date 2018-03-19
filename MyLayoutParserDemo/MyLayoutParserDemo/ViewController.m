@@ -19,7 +19,7 @@
     [super viewDidLoad];
 //    [FALiveLeftDrawerView showInView:self.view];
     __weak typeof(self) wSelf = self;
-    NSString * path = [[NSBundle mainBundle] pathForResource:@"test4" ofType:@"xml"];
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"test5" ofType:@"xml"];
     NSXMLParser * parser = [self.parserManager parserFilePath:path withBlock:^(NSMutableDictionary *xmlDictionary, NSString *jsonString,UIView * view, NSError *error) {
         if (error) {
             NSLog(@"xml 解析错误：%@",error);
