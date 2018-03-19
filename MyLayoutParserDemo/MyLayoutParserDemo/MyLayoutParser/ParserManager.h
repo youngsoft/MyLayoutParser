@@ -19,4 +19,5 @@
 
 @interface ParserManager : NSObject
 - (NSXMLParser *)parserFilePath:(NSString *)path withBlock:(XMLParserBlock)block superView:(UIView *)superView;
+- (UIView *)parserFindViewById:(NSString *)viewId;
 @end

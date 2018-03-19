@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef void(^XMLParserBlock)(NSMutableDictionary * xmlDictionary, NSString * jsonString, UIView * view,NSError * error);
+@class ParserManager;
+typedef void(^XMLParserBlock)(ParserManager * parser,NSMutableDictionary * xmlDictionary, NSString * jsonString, UIView * view,NSError * error);
 @interface NSXMLParser (MyLayout)
 @property (nonatomic, strong) NSURL *xmlUrl;
 @property (nonatomic, copy) NSString *jsonString;
