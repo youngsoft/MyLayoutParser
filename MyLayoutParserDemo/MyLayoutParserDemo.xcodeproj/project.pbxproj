@@ -34,7 +34,6 @@
 		CA71BEDD1EF90C5300B14B72 /* ParserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA71BEDC1EF90C5300B14B72 /* ParserManager.m */; };
 		CA71BEEE1EF925ED00B14B72 /* test2.xml in Resources */ = {isa = PBXBuildFile; fileRef = CA71BEED1EF925ED00B14B72 /* test2.xml */; };
 		CA71BF001EF931A200B14B72 /* NSXMLParser+MyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CA71BEFF1EF931A200B14B72 /* NSXMLParser+MyLayout.m */; };
-		CA72D90B205F53F1005751CC /* test5.xml in Resources */ = {isa = PBXBuildFile; fileRef = CA72D90A205F53F1005751CC /* test5.xml */; };
 		CA9CBC4E1EFA765E008483F7 /* test3.xml in Resources */ = {isa = PBXBuildFile; fileRef = CA9CBC4D1EFA765E008483F7 /* test3.xml */; };
 		CAA1E7E11EFB577C00B1CA30 /* UIColor+ColorChange.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA1E7E01EFB577C00B1CA30 /* UIColor+ColorChange.m */; };
 		CAC269CB205F671200F5690B /* FormulaStringCalcUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC269CA205F671200F5690B /* FormulaStringCalcUtility.m */; };
@@ -87,7 +86,6 @@
 		CA71BEED1EF925ED00B14B72 /* test2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test2.xml; sourceTree = "<group>"; };
 		CA71BEFE1EF931A200B14B72 /* NSXMLParser+MyLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLParser+MyLayout.h"; sourceTree = "<group>"; };
 		CA71BEFF1EF931A200B14B72 /* NSXMLParser+MyLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLParser+MyLayout.m"; sourceTree = "<group>"; };
-		CA72D90A205F53F1005751CC /* test5.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = test5.xml; sourceTree = "<group>"; };
 		CA9CBC4D1EFA765E008483F7 /* test3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = test3.xml; sourceTree = "<group>"; };
 		CAA1E7DF1EFB577B00B1CA30 /* UIColor+ColorChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorChange.h"; sourceTree = "<group>"; };
 		CAA1E7E01EFB577C00B1CA30 /* UIColor+ColorChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorChange.m"; sourceTree = "<group>"; };
@@ -225,7 +223,6 @@
 				CA71BEED1EF925ED00B14B72 /* test2.xml */,
 				CA9CBC4D1EFA765E008483F7 /* test3.xml */,
 				CA2CF410205D0BED005F9606 /* test4.xml */,
-				CA72D90A205F53F1005751CC /* test5.xml */,
 			);
 			name = HTML;
 			sourceTree = "<group>";
@@ -339,7 +336,6 @@
 				CA71BED91EF9059A00B14B72 /* test.xml in Resources */,
 				1840A86D1EFB781B0080EBE1 /* style.plist in Resources */,
 				CA9CBC4E1EFA765E008483F7 /* test3.xml in Resources */,
-				CA72D90B205F53F1005751CC /* test5.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
